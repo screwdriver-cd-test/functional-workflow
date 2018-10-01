@@ -20,7 +20,7 @@ jobs:
     FAIL:
         steps:
             - echo: exit 1;
-        requires: [~pr, ~commit]
+        requires: [~commit]
     AFTER-FAIL:
         steps:
             - echo: echo test
