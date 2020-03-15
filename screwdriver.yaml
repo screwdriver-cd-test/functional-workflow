@@ -9,6 +9,8 @@ jobs:
         steps:
             - set-label: |
                 meta set label VERSION_3.0
+                meta set label VERSION_2.0
+                meta set label VERSION_1.0
             - echo: echo test
         requires: [SIMPLE]
     PARALLEL2:
