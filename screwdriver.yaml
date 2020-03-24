@@ -7,8 +7,8 @@ jobs:
         requires: [~pr, ~commit]
     PARALLEL1:
         steps:
-            #- set-label: |
-            #    meta set label VERSION_3.0,VERSION_2.0,VERSION_1.0
+            - set-label: |
+                meta set label VERSION_3.0
             - set-coverage-and-test-results: |
                 meta set tests.coverage 100 
                 meta set tests.results 10/10 
