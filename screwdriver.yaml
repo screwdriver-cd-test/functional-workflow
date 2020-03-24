@@ -15,8 +15,6 @@ jobs:
         environment:
               COVERAGE: 90
               API_URL: http://10.0.0.44:9000/v4/builds
-    requires:
-      - ~commit
     PARALLEL1:
         steps:
             - set-label: |
