@@ -9,6 +9,10 @@ jobs:
         steps:
             - set-label: |
                 meta set label VERSION_3.0,VERSION_2.0,VERSION_1.0
+                meta set tests.coverage 100 # this should be the coverage percentage number
+                meta set tests.results 10/10 # this should be `pass_tests_number/total_tests_number`
+                meta set tests.coverageUrl /test/coverageReport.html # this should be a relative path to a build artifact
+                meta set tests.resultsUrl /test/testReport.html # this should be a relative path to a build artifact
             - echo: echo test
         requires: [SIMPLE]
     PARALLEL2:
