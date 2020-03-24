@@ -14,6 +14,9 @@ jobs:
     PARALLEL2:
         steps:
             - echo: echo test
+            - status: |
+                 meta set meta.status.findbugs '{"status":"FAILURE","message":"923 issues found. Previous count: 914 issues.","url":"http://findbugs.com"}'
+                 meta set meta.status.coverage '{"status":"SUCCESS","message":"Coverage is above 80%."}'
         requires: [SIMPLE]
     JOIN:
         steps:
