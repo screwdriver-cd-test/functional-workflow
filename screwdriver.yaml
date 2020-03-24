@@ -5,6 +5,18 @@ jobs:
         steps:
             - echo: echo test
         requires: [~pr, ~commit]
+    CHANDRA:
+        steps:
+            - set-unstable: |
+                if [ "$COVERAGE" -lt 95 ]
+                    then curl -X PUT -H "Authorization: Bearer $SD_TOKEN" -H "Content-Type: application/json" -d '{"status": "UNSTABLE", "statusMessage": "this build is unstable"}' "${API_URL}/${SD_BUILD_ID}"
+                fi
+            - echo: echo "This build status is set as Unstable and will not trigger the next build"
+        environment:
+              COVERAGE: 90
+              API_URL: http://10.0.0.44:9000/v4/builds
+    requires:
+      - ~commit
     PARALLEL1:
         steps:
             - set-label: |
