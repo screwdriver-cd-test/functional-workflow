@@ -37,6 +37,10 @@ jobs:
         steps:
             - echo: echo test
         requires: [~pr:/^.*$/, ~commit:/^.*$/]
+    UNMATCH-REGEX:
+        steps:
+            - echo: echo test
+        requires: [~pr:/^unmatch$/, ~commit:/^unmatch$/]
     MASTER-PR:
         steps:
             - echo: echo test
