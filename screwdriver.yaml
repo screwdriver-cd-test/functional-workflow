@@ -1,5 +1,5 @@
 shared:
-    image: node:8
+    image: node:18
 jobs:
     SIMPLE:
         steps:
@@ -25,6 +25,10 @@ jobs:
         steps:
             - echo: echo test
         requires: [FAIL]
+    AFTER-FAIL-JOIN:
+        steps:
+            - echo: echo test
+        requires: [SIMPLE, FAIL]
     STAGING:
         steps:
             - echo: echo test
