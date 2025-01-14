@@ -1,51 +1,35 @@
 shared:
-    image: node:18
+    image: node:20
+    steps:
+        - echo: echo test
+    annotations:
+        screwdriver.cd/virtualJob: true
 jobs:
     SIMPLE:
-        steps:
-            - echo: echo test
         requires: [~pr, ~commit]
     PARALLEL1:
-        steps:
-            - echo: echo test
         requires: [SIMPLE]
     PARALLEL2:
-        steps:
-            - echo: echo test
         requires: [SIMPLE]
     JOIN:
-        steps:
-            - echo: echo test
         requires: [PARALLEL1, PARALLEL2]
     FAIL:
         steps:
             - echo: exit 1;
         requires: [~commit]
+        annotations:
+            screwdriver.cd/virtualJob: false
     AFTER-FAIL:
-        steps:
-            - echo: echo test
         requires: [FAIL]
     AFTER-FAIL-JOIN:
-        steps:
-            - echo: echo test
         requires: [SIMPLE, FAIL]
     STAGING:
-        steps:
-            - echo: echo test
         requires: [~pr:staging, ~commit:staging]
     AFTER-STAGING:
-        steps:
-            - echo: echo test
         requires: [STAGING]
     REGEX:
-        steps:
-            - echo: echo test
         requires: [~pr:/^.*$/, ~commit:/^.*$/]
     MASTER-PR:
-        steps:
-            - echo: echo test
         requires: [~pr:master]
     AFTER-MASTER-PR:
-        steps:
-            - echo: echo test
         requires: [MASTER-PR]
