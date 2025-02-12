@@ -27,6 +27,8 @@ jobs:
         requires: [STAGING]
     REGEX:
         requires: [~pr:/^.*$/, ~commit:/^.*$/]
+    UNMATCH-REGEX:
+        requires: [~pr:/^unmatch$/, ~commit:/^unmatch$/]
     MASTER-PR:
         requires: [~pr:master]
     AFTER-MASTER-PR:
