@@ -21,6 +21,8 @@ jobs:
             screwdriver.cd/virtualJob: false
     AFTER-FAIL:
         requires: [FAIL]
+    AFTER-FAIL-JOIN:
+        requires: [SIMPLE, FAIL]
     STAGING:
         requires: [~pr:staging, ~commit:staging]
     AFTER-STAGING:
